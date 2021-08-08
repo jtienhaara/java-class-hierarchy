@@ -99,7 +99,7 @@ COMPILE_PRE = \
 	-classpath $(CLASSPATH_COMPILE):$(CLASSPATH_DEPENDENCIES) \
 	-d $(BUILD_DIR)/compile
 COMPILE = \
-	$(patsubst %.$(EXTENSION_TARGET),%.$(EXTENSION_SOURCE),$(COMPILABLES))
+	$(patsubst %.$(EXTENSION_TARGET),source/$(PACKAGE_DIR)/%.$(EXTENSION_SOURCE),$(COMPILABLES))
 COMPILE_POST = 
 
 # Take raw .class, .o, etc filenames and prepend $(BUILD_DIR)/compile/...:
@@ -113,11 +113,11 @@ BUILD_DIR_COMPILES = \
 DOC_BIN = javadoc
 DOC_PRE = \
 	-overview $(JAVADOC_OVERVIEW) \
-	-sourcepath $(CLASSPATH_COMPILE):$(CLASSPATH_DEPENDENCIES):$(PLATFORM_DIR) \
+	-sourcepath source \
 	-classpath $(CLASSPATH_COMPILE):$(CLASSPATH_DEPENDENCIES) \
 	-d $(BUILD_DIR)/doc \
-	-windowtitle "Musaico $(PACKAGE)" \
-	-doctitle "Musaico $(VERSION)" \
+	-windowtitle "$(PACKAGE)" \
+	-doctitle "$(PACKAGE) $(VERSION)" \
 	-quiet
 DOC = \
 	$(DEPENDENCY_PACKAGES) \
@@ -441,7 +441,7 @@ java_compile:
 # Too slow for platform_compile to depend on $(BUILD_DIR_COMPILES)
 
 # Compile each .java file into a .class file:
-$(BUILD_DIR)/compile/$(PACKAGE_DIR)/%.$(EXTENSION_TARGET) : %.$(EXTENSION_SOURCE)
+$(BUILD_DIR)/compile/$(PACKAGE_DIR)/%.$(EXTENSION_TARGET) : source/$(PACKAGE_DIR)/%.$(EXTENSION_SOURCE)
 	$(COMPILE_BIN) $(COMPILE_PRE) $< $(COMPILE_POST)
 	@$(REMOVE) $(DOC_ROOT_TARGET)
 	@$(REMOVE) $(LIB)
