@@ -1,0 +1,8 @@
+Application-Name: [ClassHierarchy]
+Specification-Title: [ClassHierarchy]
+Specification-Version: [1.0.0]
+Specification-Vendor: Copyright (c) 2009-2021 Johann Tienhaara
+Implementation-Title: [ClassHierarchy]
+Implementation-Version: [1.0.0]
+Implementation-Vendor: Copyright (c) 2009-2021 Johann Tienhaara
+Main-Class: classhierarchy.ClassHierarchy
