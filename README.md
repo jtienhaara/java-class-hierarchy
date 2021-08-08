@@ -36,3 +36,6 @@ And the output might be something like:
 Questions?  Comments?  Bug reports?  Contact Johann Tienhaara:
 
 jtienhaara@yahoo.com
+
+## License
+GPL version 3.0.
